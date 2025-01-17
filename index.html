@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative Designs - Professional Graphic Design and Branding Solutions">
+    <meta name="author" content="Creative Designs">
+    <title>Rayzin Media - Professional Graphic Design</title>
+
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Reset Styles */
+body, h1, h2, h3, p, ul, li, a, img, button {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Body */
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Loading Progress Bar */
+#loading-bar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: red;
+    z-index: 9999;
+}
+
+#loading-bar {
+    height: 100%;
+    width: 0;
+    background-color: red;
+}
+
+/* Header Section */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+#logo {
+    position: fixed !important;
+    top: 10px !important;
+    right: 20px !important;
+    z-index: 30 !important;
+}
+
+#logo img {
+    width: auto !important;
+    height: 40px !important;
+}
+
+/* Navigation */
+.navigation {
+    position: sticky;
+    bottom: 20px;
+    right: 100px;
+    background-color: red;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.navigation ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.navigation li {
+    margin: 0 15px;
+}
+
+.navigation a {
+    color: black;
+    font-size: 18px;
+}
+
+.navigation a:hover {
+    color: white;
+}
+
+/* Slider Section */
+#ABdev_main_slider {
+    margin-top: 120px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.slider-container {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slider-item {
+    min-width: 100%;
+    max-width: 100%;
+    flex-shrink: 0;
+}
+
+.slider-item img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.slider-nav {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.slider-nav span {
+    cursor: pointer;
+    font-size: 24px;
+    color: darkred;
+    margin: 0 5px;
+}
+
+.slider-nav span:hover {
+    color: #fff;
+}
+
+/* Services Section */
+.services {
+    background-color: #f4f4f9;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.services .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-box {
+    background-color: #fff;
+    color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    min-width: 250px;
+    max-width: 280px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.service-box h3 {
+    color: red;
+    margin-bottom: 15px;
+}
+
+.service-box p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Footer Section */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: dodgerblue;
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+.social-links a:hover {
+    color: red;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .services .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .service-box {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* About Section */
+.about-section {
+    padding: 50px;
+    background: linear-gradient(to right, #FF0000, #FF6347);
+    color: #fff;
+    text-align: center;
+}
+
+.about-section h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Content Section */
+.content-section {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content-section h2 {
+    text-align: center;
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.content-box {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.content-box img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+.content-box h3 {
+    font-size: 24px;
+    color: #d32f2f;
+    margin-bottom: 10px;
+}
+
+.content-box p {
+    font-size: 16px;
+    color: #b71c1c;
+}
+
+/* Services Section */
+.services-section {
+    padding: 50px;
+    background-color: #fff;
+}
+
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.service-card {
+    background-color: #fff;
+    border: 2px solid #FF0000;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+}
+
+.service-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #FF0000;
+}
+
+.service-card p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.service-link {
+    text-decoration: none;
+    color: #fff;
+    background-color: dodgerblue;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.service-link:hover {
+    background-color: #FF6347;
+}
+
+/* Call-to-Action Button */
+.cta-button {
+    display: inline-block;
+    background-color: #e60000;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #b30000;
+}
+
+/* General Section Styles */
+section {
+    padding: 40px 20px;
+}
+
+section h2 {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+section p {
+    font-size: 1.1em;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Process/Service Steps */
+.process-container, .service-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.process-step, .service-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1 1 300px;
+    min-width: 250px;
+}
+
+.process-step h3, .service-item h3 {
+    color: #e60000;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.process-step p, .service-item p {
+    color: #555;
+}
+
+/* Services Section Styles */
+.services-section {
+    padding: 40px 20px;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+.services-heading {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.service-card {
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    margin: 10px;
+    text-align: center;
+}
+
+.service-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: red;
+}
+
+.service-card p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.service-card a {
+    color: red;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.service-card a:hover {
+    text-decoration: underline;
+}
+
+/* Gallery Section */
+.gallery-section {
+    padding: 40px 20px;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Style for the Team Section */
+.content-section {
+    padding: 50px 0;
+    background-color: white; /* Optional: ensures the background is white */
+    text-align: center;
+}
+
+.team-grid {
+    display: flex; /* Flexbox for side-by-side layout */
+    justify-content: center; /* Centers the team cards */
+    gap: 30px; /* Space between cards */
+    flex-wrap: wrap; /* Ensures the layout is responsive */
+}
+
+.content-box {
+    width: 250px; /* Set a fixed width for the cards */
+    background-color: #f7f7f7; /* Light background for the cards */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow */
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.content-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%; /* Circular image */
+    margin-bottom: 15px;
+}
+
+.content-box h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.content-box p {
+    color: #777;
+    font-size: 1.1em;
+}
+/* Container styles */
+#ABdev_main_slider {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.slider-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider-item {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+img, video {
+    width: 100%;
+    height: auto;
+}
+
+/* Circle Indicators Styles */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: red; /* Red color for the dots */
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: darkred; /* Darker red when active */
+}
+
+
+.content-box:hover {
+    transform: translateY(-10px); /* Lift card on hover */
+}
+
+/* Ensure responsiveness for smaller screens */
+@media (max-width: 768px) {
+    .team-grid {
+        flex-direction: column; /* Stack cards vertically on small screens */
+        align-items: center;
+    }
+
+    .content-box {
+        width: 80%; /* Adjust card width for small screens */
+    }
+}
+
+/* General form styling */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Styling individual form elements */
+.contact-form input,
+.contact-form textarea,
+.contact-form button {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form textarea {
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+/* Hover and focus states */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Button styling */
+.contact-form button {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for textarea */
+.contact-form textarea {
+    height: 150px;
+    resize: vertical;
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 15px;
+    }
+
+    .contact-form h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+        font-size: 0.9rem;
+    }
+}
+/* Basic Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-top: 30px;
+}
+
+.contact-form {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 1rem;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #6C5B7B;
+    outline: none;
+}
+
+button {
+    background-color: #6C5B7B;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #5a4a61;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-icon {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    color: #6C5B7B;
+}
+/* Basic Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-top: 30px;
+}
+
+.contact-form {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: darkred;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Add a red container around the inputs */
+.input-container {
+    background-color: darkred; /* Red background for the input container */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Label Style */
+label {
+    font-size: 1rem;
+    color: black; /* Black color for labels */
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Add red color to specific labels */
+label[for="name"],
+label[for="email"],
+label[for="message"] {
+    color: black; /* Set black color for all labels */
+}
+
+/* Input and Textarea Fields */
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+/* Focus Effect */
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #6C5B7B;
+    outline: blue;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Submit Button */
+button {
+    background-color: #6C5B7B;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #5a4a61;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-icon {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    color: #6C5B7B;
+}
+/* Input Container Styles */
+.input-container {
+    width: 100%; /* Make the container match the width of the input field */
+    background-color: black; /* Red background for input container */
+    padding: 10px;
+    margin-bottom: 10px; /* Space between fields */
+    border-radius: 5px; /* Slightly rounded corners */
+    box-sizing: border-box; /* Include padding in the total width */
+}
+
+.input-container input,
+.input-container textarea {
+    width: 100%; /* Full width of the container */
+    padding: 10px;
+    border: none;
+    background-color: white; /* White background for inputs */
+    font-size: 16px;
+    color: black;
+    border-radius: 5px; /* Slightly rounded input edges */
+}
+
+.input-container input:focus,
+.input-container textarea:focus {
+    outline: 2px solid #007BFF; /* Blue outline when focused */
+    background-color: darkred;
+}
+
+.form-label {
+    color: black; /* Black color for labels */
+    font-size: 18px; /* Slightly smaller font size for labels */
+    margin-bottom: 5px;
+    display: block; /* Block display to stack labels above inputs */
+}
+    /* Ensure that the images are landscape and have the same width and height */
+    #ABdev_main_slider {
+        margin-top: 120px;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        padding-bottom: 20px;
+    }
+
+    .slider-container {
+        display: flex;
+        transition: transform 0.5s ease;
+    }
+
+    .slider-item {
+        min-width: 100%;
+        max-width: 100%;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .slider-item img, .slider-item video {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;  /* Ensures images and videos fill the container without distortion */
+    }
+
+    /* Video styling */
+    .slider-item video {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Loading Progress Bar -->
+    <div id="loading-bar-container">
+        <div id="loading-bar"></div>
+    </div>
+
+    <!-- HEADER SECTION -->
+    <header>
+        <div id="logo">
+            <a href="/myapp/static">
+                <img src="images/WhatsApp Image 2024-11-11 at 10.03.06 AM.jpeg" alt="Creative Designs Logo">
+            </a>
+        </div>
+
+        <nav class="navigation">
+            <ul>
+
+    <li><a href="index.html#home">Home</a></li>
+    <li><a href="services.html#services">Services</a></li>
+   <li><a href="https://wordpress.com/edit/jetpack-portfolio/sharonbungeiblog.wordpress.com/455">Portfolio</a></li>
+    <li><a href="about.html#about">About Us</a></li>
+    <li><a href="contact.html">Contact</a></li>
+
+
+            </ul>
+        </nav>
+    </header>
+<!-- SLIDER SECTION -->
+<section id="ABdev_main_slider" aria-label="Main Slider">
+    <div class="slider-container">
+        <div class="slider-item">
+            <img src="images/WhatsApp%20Image%202025-01-16%20at%2012.56.53%20PM.jpeg"
+                 alt="Creative Graphic Design">
+        </div>
+        <div class="slider-item">
+            <img src="images/WhatsApp%20Image%202025-01-16%20at%2012.56.54%20PM%20(1).jpeg"
+                 alt="Innovative Graphic Art">
+        </div>
+        <div class="slider-item">
+            <img src="images/WhatsApp%20Image%202025-01-16%20at%2012.56.55%20PM.jpeg"
+                 alt="Modern Graphic Illustration">
+        </div>
+        <div class="slider-item">
+            <img src="images/banner-1.jpg"
+                 alt="Professional Banner Design">
+        </div>
+
+    </div>
+
+    <!-- Navigation Circle Indicators -->
+    <div class="slider-dots">
+        <span class="dot" onclick="moveSlide(0)"></span>
+        <span class="dot" onclick="moveSlide(1)"></span>
+        <span class="dot" onclick="moveSlide(2)"></span>
+        <span class="dot" onclick="moveSlide(3)"></span>
+        <span class="dot" onclick="moveSlide(4)"></span>
+    </div>
+</section>
+
+
+
+
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services">
+        <div class="container">
+            <!-- Service Box 1 -->
+            <div class="service-box">
+                <i class="fas fa-paint-brush service-icon"></i>
+                <h3>Logo Design</h3>
+                <p>Custom logos for businesses to create a unique identity that resonates with your brand vision.</p>
+            </div>
+            <!-- Service Box 2 -->
+            <div class="service-box">
+                <i class="fas fa-pen-fancy service-icon"></i>
+                <h3>Branding</h3>
+                <p>Complete branding solutions to help you establish a strong and consistent brand presence.</p>
+            </div>
+            <!-- Service Box 3 -->
+            <div class="service-box">
+                <i class="fas fa-laptop service-icon"></i>
+                <h3>Web Design</h3>
+                <p>Responsive, modern, and user-friendly websites designed to help you succeed online.</p>
+            </div>
+            <!-- Service Box 4 -->
+            <div class="service-box">
+                <i class="fas fa-pencil-alt service-icon"></i>
+                <h3>Illustration</h3>
+                <p>Custom illustrations for your projects that add a creative and personalized touch.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="content-section">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>We are a team of passionate graphic designers dedicated to creating impactful visual identities. Our mission is to bring your creative vision to life with precision and expertise. We specialize in branding, logo design, web design, and illustration.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer>
+        <p>&copy; 2025 Rayzin Media | All Rights Reserved</p>
+        <div class="social-links">
+            <a href="http://www.facebook.com/rayzinmedia" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="http://www.tiktok.com/@rayzinmedia" class="social-icon" aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
+            <a href="http://www.instagram.com/rayzinmedia" class="social-icon" aria-label="LinkedIn"><i class="fab fa-instagram"></i></a>
+            <a href="http://www.linkedin.com/sharon-bungei-jebet" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <script src="script/js.js' "></script>
+    <script src="script/new.js' "></script>
+</body>
+
+</html>

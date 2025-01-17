@@ -1,0 +1,48 @@
+/* Container styles */
+#ABdev_main_slider {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.slider-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider-item {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+img, video {
+    width: 100%;
+    height: auto;
+}
+
+/* Circle Indicators Styles */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: red; /* Red color for the dots */
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: darkred; /* Darker red when active */
+}
