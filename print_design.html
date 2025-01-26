@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,40 +17,152 @@
     <link rel="preload" href="script/js.js" as="script">
 
     <style>
-    /* Hover effect for service items */
-    .service-item:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
+        /* Mobile Navigation Menu Styles */
+        #hamburger {
+            display: none; /* Hide by default */
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
 
-    /* Hover effect for logos */
-    .service-item:hover .logo {
-        transform: scale(1.1);
-    }
-    /* Hover effect for service items */
-        .service-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        @media (max-width: 768px) {
+            #hamburger {
+                display: block; /* Show on mobile */
+            }
+
+            .navigation {
+                position: fixed;
+                top: 60px; /* Adjust based on header height */
+                right: -100%; /* Hide off-screen */
+                width: 80%;
+                height: 100vh;
+                background-color: #333;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 20px;
+                transition: right 0.3s ease;
+            }
+
+            .navigation.active {
+                right: 0; /* Slide in */
+            }
+
+            .navigation ul {
+                flex-direction: column;
+            }
+
+            .navigation li {
+                margin: 15px 0;
+            }
+        }
+
+        /* Responsive Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Print Design Introduction Section */
+        .print-design-intro {
+            padding: 40px 0;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .print-design-intro h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .print-design-intro p {
+            font-size: 1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Print Design Services Section */
+        .print-design-services {
+            padding: 40px 0;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .print-design-services h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .service-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
 
         .service-item {
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
-            margin: 15px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Column Layout for Print Design Services */
-        .service-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            padding: 40px;
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
-</style>
+
+        .service-item h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .service-item p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Call-to-Action Section */
+        .print-design-cta {
+            padding: 40px 0;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .print-design-cta h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .print-design-cta p {
+            font-size: 1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #ff0000;
+            color: white;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #cc0000;
+        }
+    </style>
 </head>
 
 <body>
@@ -61,74 +172,97 @@
         <div id="loading-bar"></div>
     </div>
 
-    <!-- HEADER SECTION -->
+    <!-- HEADER SECTION (Unchanged) -->
     <header class="branding-header">
         <div id="logo">
-            <a href="/myapp/static">
+            <a href="index.html">
                 <img src="images/WhatsApp Image 2024-11-11 at 10.03.06 AM.jpeg" alt="Rayzin Media Logo">
             </a>
         </div>
 
-        <nav class="navigation">
-            <ul>
-                  <li><a href="index.html#home">Home</a></li>
-                  <li><a href="services.html#services">Services</a></li>
-                 <li><a href="https://wordpress.com/edit/jetpack-portfolio/sharonbungeiblog.wordpress.com/455">Portfolio</a></li>
-                  <li><a href="about.html#about">About Us</a></li>
-                  <li><a href="contact.html">Contact</a></li>
+        <!-- Hamburger Icon for Mobile -->
+        <div id="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
 
+        <!-- Navigation Menu -->
+        <nav class="navigation" id="navigation">
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="services.html#services">Services</a></li>
+                <li><a href="https://wordpress.com/edit/jetpack-portfolio/sharonbungeiblog.wordpress.com/455">Portfolio</a></li>
+                <li><a href="about.html#about">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
-
     </header>
-
 
     <!-- Print Design Introduction Section -->
     <section class="print-design-intro">
-
-        <h2>Why Print Design is Important</h2>
-        <p>Print materials still play a crucial role in business marketing. Whether it’s business cards, brochures, or posters, we specialize in creating high-quality print designs that align with your brand identity and effectively attract attention.</p>
+        <div class="container">
+            <h2>Why Print Design is Important</h2>
+            <p>Print materials still play a crucial role in business marketing. Whether it’s business cards, brochures, or posters, we specialize in creating high-quality print designs that align with your brand identity and effectively attract attention.</p>
+        </div>
     </section>
 
-    <!-- Our Print Design Services Section -->
-     <!-- Our Print Design Services Section -->
+    <!-- Print Design Services Section -->
     <section class="print-design-services">
-        <h2>Our Print Design Services</h2>
-        <div class="service-container">
-            <div class="service-item">
-                <h3>Business Cards</h3>
-                <p>High-quality business cards that reflect your professionalism and brand identity.</p>
-            </div>
-            <div class="service-item">
-                <h3>Brochures & Flyers</h3>
-                <p>Design eye-catching brochures and flyers that effectively communicate your message to your audience.</p>
-            </div>
-            <div class="service-item">
-                <h3>Posters & Banners</h3>
-                <p>Create visually appealing posters and banners to grab attention at events and in-store promotions.</p>
+        <div class="container">
+            <h2>Our Print Design Services</h2>
+            <div class="service-container">
+                <div class="service-item">
+                    <h3>Business Cards</h3>
+                    <p>High-quality business cards that reflect your professionalism and brand identity.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Brochures & Flyers</h3>
+                    <p>Design eye-catching brochures and flyers that effectively communicate your message to your audience.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Posters & Banners</h3>
+                    <p>Create visually appealing posters and banners to grab attention at events and in-store promotions.</p>
+                </div>
             </div>
         </div>
     </section>
+
     <!-- Call-to-Action Section -->
     <section class="print-design-cta">
-        <h2>Ready for High-Quality Print Designs?</h2>
-        <p>Let us help you create print materials that stand out and drive results for your business. Whether you need business cards, brochures, or banners, our team is here to assist you in making a lasting impression.</p>
-        <a href="contact.html" class="cta-button">Get Started Today</a>
+        <div class="container">
+            <h2>Ready for High-Quality Print Designs?</h2>
+            <p>Let us help you create print materials that stand out and drive results for your business. Whether you need business cards, brochures, or banners, our team is here to assist you in making a lasting impression.</p>
+            <a href="contact.html" class="cta-button">Get Started Today</a>
+        </div>
     </section>
 
-    <!-- FOOTER SECTION -->
+    <!-- FOOTER SECTION (Unchanged) -->
     <footer>
-        <p>&copy; 2024 Rayzin Media | All Rights Reserved</p>
+        <p>&copy; 2025 Rayzin Media | All Rights Reserved</p>
         <div class="social-links">
             <a href="http://www.facebook.com/rayzinmedia" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
             <a href="http://www.tiktok.com/@rayzinmedia" class="social-icon" aria-label="Twitter"><i class="fab fa-tiktok"></i></a>
             <a href="http://www.instagram.com/rayzinmedia" class="social-icon" aria-label="LinkedIn"><i class="fab fa-instagram"></i></a>
-            <a href="http://www.linkedin.com/sharon-bungei-jebet" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="http://www.linkedin.com/in/sharon-bungei-861730216" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
         </div>
     </footer>
 
-    <!-- Include JS Scripts -->
-    <script src="script/js.js"></script>
+    <!-- JavaScript for Mobile Navigation -->
+    <script>
+        // Toggle navigation menu on mobile
+        function toggleMenu() {
+            const navigation = document.getElementById('navigation');
+            navigation.classList.toggle('active');
+        }
+
+        // Close menu when a link is clicked (optional)
+        const navLinks = document.querySelectorAll('.navigation a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const navigation = document.getElementById('navigation');
+                navigation.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 
 </html>

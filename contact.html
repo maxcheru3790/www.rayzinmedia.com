@@ -16,41 +16,193 @@
     <link rel="preload" href="css/style.css" as="style">
     <link rel="preload" href="script/js.js" as="script">
 
-     <style>
+    <style>
+        /* Reset Styles */
+        body, h1, h2, h3, p, ul, li, a, img, button {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
 
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: sticky;
-            bottom: 0;
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Body */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the body takes at least the full viewport height */
+            background-color: white;
+            color: #333;
+            line-height: 1.6;
+            padding: 50px 0 0; /* Added padding-top */
+        }
+
+        /* Main Content Wrapper */
+        .main-content {
+            flex: 1; /* Allow the main content to grow and push the footer down */
+        }
+
+        /* Loading Progress Bar */
+        #loading-bar-container {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 2px;
+            background-color: red;
+            z-index: 9999;
+        }
+
+        #loading-bar {
+            height: 100%;
+            width: 0;
+            background-color: red;
+        }
+
+        /* Header Section */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #logo img {
+            width: auto;
+            height: 40px;
+        }
+
+        /* Hamburger Icon */
+        #hamburger {
+            display: none; /* Hide by default */
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Navigation */
+        .navigation {
+            display: flex;
+            align-items: center;
+        }
+
+        .navigation ul {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navigation li {
+            margin: 0 15px;
+        }
+
+        .navigation a {
+            color: black;
+            font-size: 18px;
+        }
+
+        .navigation a:hover {
+            color: white;
+        }
+
+        /* Responsive Navigation */
+        @media (max-width: 768px) {
+            #hamburger {
+                display: block; /* Show on mobile */
+            }
+
+            .navigation {
+                position: fixed;
+                top: 60px; /* Adjust based on header height */
+                right: -100%; /* Hide off-screen */
+                width: 80%;
+                height: 100vh;
+                background-color: #333;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 20px;
+                transition: right 0.3s ease;
+            }
+
+            .navigation.active {
+                right: 0; /* Slide in */
+            }
+
+            .navigation ul {
+                flex-direction: column;
+            }
+
+            .navigation li {
+                margin: 15px 0;
+            }
+        }
+
+        /* Contact Information Section */
+        .content-section {
+            padding: 20px;
+            text-align: center;
         }
 
         .contact-info {
             margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .contact-item {
             margin-bottom: 10px;
+            width: 100%;
+            text-align: center;
         }
 
         .contact-link {
             text-decoration: none;
-            color: #333;
+            color: red;
             font-size: 18px;
             display: flex;
             align-items: center;
+            justify-content: center;
         }
 
         .contact-link i {
             margin-right: 10px;
         }
+
+        /* Footer Section */
+        footer {
+            background-color: #333; /* Keep the original background color */
+            color: white; /* Keep the original text color */
+            text-align: center;
+            padding: 10px 0;
+            margin-top: auto; /* Push the footer to the bottom */
+        }
+
+        .social-links a {
+            color: white; /* Keep the original icon color */
+            margin: 0 10px;
+            font-size: 18px;
+        }
+
+        .social-links a:hover {
+            color: red; /* Keep the original hover color */
+        }
     </style>
 </head>
 
-<body style="background-color: white;">
+<body>
 
     <!-- Loading Progress Bar -->
     <div id="loading-bar-container">
@@ -65,51 +217,74 @@
             </a>
         </div>
 
-        <nav class="navigation">
+        <!-- Hamburger Icon -->
+        <div id="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="navigation" id="navigation">
             <ul>
                 <li><a href="index.html#home">Home</a></li>
                 <li><a href="services.html#services">Services</a></li>
                 <li><a href="https://wordpress.com/edit/jetpack-portfolio/sharonbungeiblog.wordpress.com/455">Portfolio</a></li>
                 <li><a href="about.html#about">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
-
             </ul>
         </nav>
     </header>
 
-     <!-- Contact Information Section -->
-    <section class="content-section">
-        <h2>Contact Us</h2>
-        <div class="contact-info">
-            <!-- Email Contact -->
-            <div class="contact-item">
-                <a href="mailto:rayzinmedia@gmail.com" class="contact-link">
-                    <i class="fas fa-envelope"></i> rayzinmedia@gmail.com
-                </a>
-            </div>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Contact Information Section -->
+        <section class="content-section">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <!-- Email Contact -->
+                <div class="contact-item">
+                    <a href="mailto:rayzinmedia@gmail.com" class="contact-link">
+                        <i class="fas fa-envelope"></i> rayzinmedia@gmail.com
+                    </a>
+                </div>
 
-            <!-- Phone Contact -->
-            <div class="contact-item">
-                <a href="tel:+254795945386" class="contact-link">
-                    <i class="fas fa-phone-alt"></i> +254795945386
-                </a>
+                <!-- Phone Contact -->
+                <div class="contact-item">
+                    <a href="tel:+254795945386" class="contact-link">
+                        <i class="fas fa-phone-alt"></i> +254795945386
+                    </a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- FOOTER SECTION -->
-    <footer style="position: fixed; bottom: 0; width: 100%; background-color: #333; color: white; text-align: center; padding: 10px 0; z-index: 1000;">
-        <p>&copy; 2024 Rayzin Media | All Rights Reserved</p>
+    <footer>
+        <p>&copy; 2025 Rayzin Media | All Rights Reserved</p>
         <div class="social-links">
             <a href="http://www.facebook.com/rayzinmedia" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="http://www.tiktok.com/@rayzinmedia" class="social-icon" aria-label="Twitter"><i class="fab fa-tiktok"></i></a>
+            <a href="http://www.tiktok.com/@rayzinmedia" class="social-icon" aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
             <a href="http://www.instagram.com/rayzinmedia" class="social-icon" aria-label="LinkedIn"><i class="fab fa-instagram"></i></a>
-            <a href="http://www.linkedin.com/sharon-bungei-jebet" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="http://www.linkedin.com/in/sharon-bungei-861730216" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
         </div>
     </footer>
 
-    <!-- Include JS Scripts -->
-    <script src="script/js.js"></script>
+    <!-- JavaScript for Mobile Navigation -->
+    <script>
+        // Toggle navigation menu on mobile
+        function toggleMenu() {
+            const navigation = document.getElementById('navigation');
+            navigation.classList.toggle('active');
+        }
+
+        // Close menu when a link is clicked (optional)
+        const navLinks = document.querySelectorAll('.navigation a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const navigation = document.getElementById('navigation');
+                navigation.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 
 </html>

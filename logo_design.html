@@ -1,21 +1,260 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Creative Designs - Professional Graphic Design and Branding Solutions">
-    <meta name="author" content="Creative Designs">
-    <title>Rayzin Media - Professional Graphic Design</title>
+    <meta name="description" content="Professional Logo Design Services by Rayzin Media">
+    <meta name="author" content="Rayzin Media">
+    <title>Logo Design Services - Rayzin Media</title>
 
     <!-- Link to external CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <!-- Preload important files for faster page loading -->
-    <link rel="preload" href="css/style.css" as="style">
-    <link rel="preload" href="script/js.js" as="script">
+    <style>
+        /* Reset Styles */
+        body, h1, h2, h3, p, ul, li, a, img, button {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Body */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the body takes at least the full viewport height */
+            background-color: white;
+            color: #333;
+            line-height: 1.6;
+            padding: 70px 0 0; /* Added padding-top */
+        }
+
+        /* Container for responsive layout */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Header Section */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #logo img {
+            width: auto;
+            height: 40px;
+        }
+
+        /* Hamburger Icon for Mobile */
+        #hamburger {
+            display: none; /* Hide by default */
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Navigation */
+        .navigation {
+            display: flex;
+            align-items: center;
+        }
+
+        .navigation ul {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navigation li {
+            margin: 0 15px;
+        }
+
+        .navigation a {
+            color: black;
+            font-size: 18px;
+        }
+
+        .navigation a:hover {
+            color: white;
+        }
+
+        /* Responsive Navigation */
+        @media (max-width: 768px) {
+            #hamburger {
+                display: block; /* Show on mobile */
+            }
+
+            .navigation {
+                position: fixed;
+                top: 60px; /* Adjust based on header height */
+                right: -100%; /* Hide off-screen */
+                width: 80%;
+                height: 100vh;
+                background-color: #333;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 20px;
+                transition: right 0.3s ease;
+            }
+
+            .navigation.active {
+                right: 0; /* Slide in */
+            }
+
+            .navigation ul {
+                flex-direction: column;
+            }
+
+            .navigation li {
+                margin: 15px 0;
+            }
+        }
+
+        /* Logo Design Introduction Section */
+        .logo-design-intro {
+            background-color: #f9f9f9;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .logo-design-intro h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .logo-design-intro p {
+            font-size: 1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Logo Design Process Section */
+        .logo-design-process {
+            padding: 40px 0;
+            background-color: white;
+            text-align: center;
+        }
+
+        .logo-design-process h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .process-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .process-step {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            flex: 1 1 250px;
+            max-width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .process-step h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .process-step p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Call-to-Action Section */
+        .logo-design-cta {
+            background-color: #f9f9f9;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .logo-design-cta h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .logo-design-cta p {
+            font-size: 1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: red;
+            color: white;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: darkred;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+            margin-top: auto; /* Push the footer to the bottom */
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,77 +265,103 @@
     </div>
 
     <!-- HEADER SECTION -->
-    <header class="branding-header">
+    <header>
         <div id="logo">
-            <a href="/myapp/static">
+            <a href="index.html">
                 <img src="images/WhatsApp Image 2024-11-11 at 10.03.06 AM.jpeg" alt="Rayzin Media Logo">
             </a>
         </div>
 
-        <nav class="navigation">
-            <ul>
-                  <li><a href="index.html#home">Home</a></li>
-                  <li><a href="services.html#services">Services</a></li>
-                  <li><a href="https://wordpress.com/edit/jetpack-portfolio/sharonbungeiblog.wordpress.com/455">Portfolio</a></li>
-                  <li><a href="about.html#about">About Us</a></li>
-                  <li><a href="contact.html">Contact</a></li>
+        <!-- Hamburger Icon for Mobile -->
+        <div id="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
 
+        <!-- Navigation Menu -->
+        <nav class="navigation" id="navigation">
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="services.html#services">Services</a></li>
+                <li><a href="https://wordpress.com/edit/jetpack-portfolio/sharonbungeiblog.wordpress.com/455">Portfolio</a></li>
+                <li><a href="about.html#about">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
-
-        <h1>Logo Design Services</h1>
-        <p>Creating Memorable Logos That Capture Your Brand Essence</p>
     </header>
 
-    <!-- Logo Design Introduction Section -->
-    <section class="logo-design-intro">
-        <h2>Why Logo Design Matters</h2>
-        <p>A logo is the face of your brand. It should communicate the essence of your business in a simple, memorable, and versatile way. Our logo design service helps you create a unique symbol that stands out in a crowded market and resonates with your audience.</p>
-    </section>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Logo Design Introduction Section -->
+        <section class="logo-design-intro">
+            <div class="container">
+                <h2>Why Logo Design Matters</h2>
+                <p>A logo is the face of your brand. It should communicate the essence of your business in a simple, memorable, and versatile way. Our logo design service helps you create a unique symbol that stands out in a crowded market and resonates with your audience.</p>
+            </div>
+        </section>
 
-    <!-- Logo Design Process Section -->
-    <section class="logo-design-process">
-        <h2>Our Logo Design Process</h2>
-        <div class="process-container">
-            <div class="process-step">
-                <h3>1. Discovery & Research</h3>
-                <p>We start by understanding your brand, target audience, and competitors to create a design that aligns with your business goals.</p>
+        <!-- Logo Design Process Section -->
+        <section class="logo-design-process">
+            <div class="container">
+                <h2>Our Logo Design Process</h2>
+                <div class="process-container">
+                    <div class="process-step">
+                        <h3>1. Discovery & Research</h3>
+                        <p>We start by understanding your brand, target audience, and competitors to create a design that aligns with your business goals.</p>
+                    </div>
+                    <div class="process-step">
+                        <h3>2. Conceptualization</h3>
+                        <p>Based on our research, we sketch several design concepts that reflect the personality of your brand. You’ll be part of the process from start to finish.</p>
+                    </div>
+                    <div class="process-step">
+                        <h3>3. Refinement</h3>
+                        <p>We refine the best concept based on your feedback, tweaking colors, typography, and design elements to perfect the final logo.</p>
+                    </div>
+                    <div class="process-step">
+                        <h3>4. Delivery</h3>
+                        <p>We deliver the final logo in multiple formats for print and digital use, along with a logo style guide to ensure brand consistency.</p>
+                    </div>
+                </div>
             </div>
-            <div class="process-step">
-                <h3>2. Conceptualization</h3>
-                <p>Based on our research, we sketch several design concepts that reflect the personality of your brand. You’ll be part of the process from start to finish.</p>
-            </div>
-            <div class="process-step">
-                <h3>3. Refinement</h3>
-                <p>We refine the best concept based on your feedback, tweaking colors, typography, and design elements to perfect the final logo.</p>
-            </div>
-            <div class="process-step">
-                <h3>4. Delivery</h3>
-                <p>We deliver the final logo in multiple formats for print and digital use, along with a logo style guide to ensure brand consistency.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Call-to-Action Section -->
-    <section class="logo-design-cta">
-        <h2>Ready for a Custom Logo?</h2>
-        <p>Let us help you create a logo that speaks to your brand’s identity and leaves a lasting impression on your audience.</p>
-        <a href="contact.html" class="cta-button">Get Started</a>
-    </section>
+        <!-- Call-to-Action Section -->
+        <section class="logo-design-cta">
+            <div class="container">
+                <h2>Ready for a Custom Logo?</h2>
+                <p>Let us help you create a logo that speaks to your brand’s identity and leaves a lasting impression on your audience.</p>
+                <a href="contact.html" class="cta-button">Get Started</a>
+            </div>
+        </section>
+    </div>
 
     <!-- FOOTER SECTION -->
     <footer>
-        <p>&copy; 2024 Rayzin Media | All Rights Reserved</p>
+        <p>&copy; 2025 Rayzin Media | All Rights Reserved</p>
         <div class="social-links">
             <a href="http://www.facebook.com/rayzinmedia" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="http://www.tiktok.com/@rayzinmedia" class="social-icon" aria-label="Twitter"><i class="fab fa-tiktok"></i></a>
+            <a href="http://www.tiktok.com/@rayzinmedia" class="social-icon" aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
             <a href="http://www.instagram.com/rayzinmedia" class="social-icon" aria-label="LinkedIn"><i class="fab fa-instagram"></i></a>
-            <a href="http://www.linkedin.com/sharon-bungei-jebet" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="http://www.linkedin.com/in/sharon-bungei-861730216" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
         </div>
     </footer>
 
-    <!-- Include JS Scripts -->
-    <script src="script/js.js"></script>
+    <!-- JavaScript for Mobile Navigation -->
+    <script>
+        // Toggle navigation menu on mobile
+        function toggleMenu() {
+            const navigation = document.getElementById('navigation');
+            navigation.classList.toggle('active');
+        }
+
+        // Close menu when a link is clicked (optional)
+        const navLinks = document.querySelectorAll('.navigation a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const navigation = document.getElementById('navigation');
+                navigation.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 
 </html>
