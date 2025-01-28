@@ -33,16 +33,16 @@
         body {
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Ensure the body takes at least the full viewport height */
+            min-height: 100vh;
             background-color: white;
             color: #333;
             line-height: 1.6;
-            padding: 50px 0 0; /* Added padding-top */
+            padding: 50px 0 0;
         }
 
         /* Main Content Wrapper */
         .main-content {
-            flex: 1; /* Allow the main content to grow and push the footer down */
+            flex: 1;
         }
 
         /* Loading Progress Bar */
@@ -84,7 +84,7 @@
 
         /* Hamburger Icon */
         #hamburger {
-            display: none; /* Hide by default */
+            display: none;
             font-size: 24px;
             color: white;
             cursor: pointer;
@@ -119,13 +119,13 @@
         /* Responsive Navigation */
         @media (max-width: 768px) {
             #hamburger {
-                display: block; /* Show on mobile */
+                display: block;
             }
 
             .navigation {
                 position: fixed;
-                top: 60px; /* Adjust based on header height */
-                right: -100%; /* Hide off-screen */
+                top: 60px;
+                right: -100%;
                 width: 80%;
                 height: 100vh;
                 background-color: #333;
@@ -137,7 +137,7 @@
             }
 
             .navigation.active {
-                right: 0; /* Slide in */
+                right: 0;
             }
 
             .navigation ul {
@@ -181,23 +181,40 @@
             margin-right: 10px;
         }
 
+        /* WhatsApp Button Styles */
+        .whatsapp-button {
+            background-color: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+        }
+
         /* Footer Section */
         footer {
-            background-color: #333; /* Keep the original background color */
-            color: white; /* Keep the original text color */
+            background-color: #333;
+            color: white;
             text-align: center;
             padding: 10px 0;
-            margin-top: auto; /* Push the footer to the bottom */
+            margin-top: auto;
         }
 
         .social-links a {
-            color: white; /* Keep the original icon color */
+            color: white;
             margin: 0 10px;
             font-size: 18px;
         }
 
         .social-links a:hover {
-            color: red; /* Keep the original hover color */
+            color: red;
         }
     </style>
 </head>
@@ -253,6 +270,13 @@
                         <i class="fas fa-phone-alt"></i> +254795945386
                     </a>
                 </div>
+
+                <!-- WhatsApp Contact -->
+                <div class="contact-item">
+                    <a href="https://wa.me/254795945386" class="whatsapp-button">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                </div>
             </div>
         </section>
     </div>
@@ -270,13 +294,11 @@
 
     <!-- JavaScript for Mobile Navigation -->
     <script>
-        // Toggle navigation menu on mobile
         function toggleMenu() {
             const navigation = document.getElementById('navigation');
             navigation.classList.toggle('active');
         }
 
-        // Close menu when a link is clicked (optional)
         const navLinks = document.querySelectorAll('.navigation a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
